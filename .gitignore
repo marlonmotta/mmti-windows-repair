@@ -1,0 +1,29 @@
+# Logs gerados pelos scripts
+WinRepair-Logs/
+*.log
+
+# Arquivos temporários do Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Arquivos de sistema
+*.tmp
+*.bak
+*.swp
+*~
+
+# Arquivos de IDE
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Arquivos de teste (se houver)
+test/
+tests/
+*.test.bat
+*.test.ps1
+
