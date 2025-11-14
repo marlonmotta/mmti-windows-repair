@@ -1,4 +1,4 @@
-#Requires -RunAsAdministrator
+﻿#Requires -RunAsAdministrator
 
 <#
 .SYNOPSIS
@@ -233,8 +233,8 @@ try {
     Write-Log "Status: CONCLUÍDO"
     $resultados.WUCache = 1
 } catch {
-    Write-Host "[ERRO] Falha na limpeza do cache: $_" -ForegroundColor Red
-    Write-Log "Erro: $_"
+    Write-Host "[ERRO] Falha na limpeza do cache: $($_.Exception.Message)" -ForegroundColor Red
+    Write-Log "Erro: $($_.Exception.Message)"
 }
 
 Write-Host ""
@@ -274,7 +274,7 @@ try {
     $resultados.TempFiles = 1
 } catch {
     Write-Host "[AVISO] Alguns arquivos não puderam ser removidos" -ForegroundColor Yellow
-    Write-Log "Aviso: $_"
+    Write-Log "Aviso: $($_.Exception.Message)"
 }
 
 Write-Host ""
@@ -316,7 +316,7 @@ try {
     }
 } catch {
     Write-Host "[ERRO] Falha ao executar DISM CheckHealth" -ForegroundColor Red
-    Write-Log "Erro: $_"
+    Write-Log "Erro: $($_.Exception.Message)"
 }
 
 Write-Host ""
@@ -351,7 +351,7 @@ try {
     }
 } catch {
     Write-Host "[ERRO] Falha ao executar DISM ScanHealth" -ForegroundColor Red
-    Write-Log "Erro: $_"
+    Write-Log "Erro: $($_.Exception.Message)"
 }
 
 Write-Host ""
@@ -388,7 +388,7 @@ try {
     }
 } catch {
     Write-Host "[ERRO] Falha ao executar DISM RestoreHealth" -ForegroundColor Red
-    Write-Log "Erro: $_"
+    Write-Log "Erro: $($_.Exception.Message)"
 }
 
 Write-Host ""
@@ -424,7 +424,7 @@ try {
     }
 } catch {
     Write-Host "[ERRO] Falha ao executar SFC" -ForegroundColor Red
-    Write-Log "Erro: $_"
+    Write-Log "Erro: $($_.Exception.Message)"
 }
 
 Write-Host ""
@@ -461,7 +461,7 @@ try {
     }
 } catch {
     Write-Host "[ERRO] Falha na limpeza de componentes" -ForegroundColor Red
-    Write-Log "Erro: $_"
+    Write-Log "Erro: $($_.Exception.Message)"
 }
 
 Write-Host ""
@@ -497,7 +497,7 @@ if ($chkdskConfirm -match '^[Ss]$') {
         $resultados.CHKDSK = "AGENDADO"
     } catch {
         Write-Host "[ERRO] Falha ao agendar CHKDSK" -ForegroundColor Red
-        Write-Log "Erro: $_"
+        Write-Log "Erro: $($_.Exception.Message)"
     }
 } else {
     Write-Host ""
@@ -616,5 +616,5 @@ Write-Log "Sistema mm.ti Lab - Windows Repair Tool v$ScriptVersion (FULL - Power
 Write-Log "========== FIM DO REPARO =========="
 
 Write-Host "Pressione qualquer tecla para fechar..." -ForegroundColor Yellow
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
 
